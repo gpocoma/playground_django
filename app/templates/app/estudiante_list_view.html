@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+{% block body %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Accion</th>
+        </tr>
+        {% for estudiante in object_list %}
+            <tr>
+                <td>{{ estudiante.id_estudiante }}</td>
+                <td>{{ estudiante.nombre }}</td>
+                <td>
+                    <a href="{% url 'estudiante_detail_view' estudiante.id_estudiante %}">Detallar</a>
+                    <a href="{% url 'estudiante_update_view' estudiante.id_estudiante %}">Modificar</a>
+                    <a href="{% url 'estudiante_delete_view' estudiante.id_estudiante %}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock body %}
